@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace DogDoor
 {
@@ -13,11 +14,11 @@ namespace DogDoor
 			Console.WriteLine("Fido barks to go outside...");
 			remote.PressButton();
 			Console.WriteLine("Fido has gone outside...");
-			remote.PressButton();
+			Thread.Sleep(10000);
 			Console.WriteLine("Fido's all done...");
+			Console.WriteLine("Fido barks to come inside...");
 			remote.PressButton();
 			Console.WriteLine("Fido's back inside...");
-			remote.PressButton();
 		}
 	}
 }
