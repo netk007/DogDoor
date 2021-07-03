@@ -9,20 +9,32 @@ namespace DogDoor
 		{
 			DogDoor door = new DogDoor();
 
-			Remote remote = new Remote(door);
+			door.AddAllowedBark(new Bark("rowlf"));
+			door.AddAllowedBark(new Bark("rooowlf"));
+			door.AddAllowedBark(new Bark("rawlf"));
+			door.AddAllowedBark(new Bark("woof"));
+
+			//Remote remote = new Remote(door);
 
 			BarkRecognizer barkRecognizer = new BarkRecognizer(door);
 
-			Console.WriteLine("Fido barks to go outside...");
-			//remote.PressButton();
-			barkRecognizer.Recognize("Woof! Woof!");
-			Console.WriteLine("Fido has gone outside...");
+			Console.WriteLine("Bruce starts barking...");
+			barkRecognizer.Recognize(new Bark("rowlf"));
+			Console.WriteLine("Bruce has gone outside...");
+
 			Thread.Sleep(10000);
-			Console.WriteLine("Fido's all done...");
-			Console.WriteLine("Fido barks to come inside...");
-			//remote.PressButton();
-			barkRecognizer.Recognize("Woof! Woof!");
-			Console.WriteLine("Fido's back inside...");
+
+			Console.WriteLine("Bruce's all done...");
+			Console.WriteLine("But he's is stuck outside!");
+
+			Console.WriteLine("A small dog starts barking...");
+			barkRecognizer.Recognize(new Bark("Yip"));
+
+			Thread.Sleep(4000);
+
+			Console.WriteLine("Bruce starts barking...");
+			barkRecognizer.Recognize(new Bark("rooowlf"));
+			Console.WriteLine("Bruce's back inside...");
 		}
 	}
 }

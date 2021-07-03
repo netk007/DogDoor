@@ -8,6 +8,7 @@ namespace DogDoor
 	public class DogDoor
 	{
 		private Boolean open;
+		private List<Bark> allowedBarks = new List<Bark>();
 
 		public DogDoor()
 		{
@@ -40,6 +41,16 @@ namespace DogDoor
 			DogDoor door = (DogDoor)obj;
 			Thread.Sleep(5000);
 			door.Close();
+		}
+
+		public void AddAllowedBark(Bark bark)
+		{
+			this.allowedBarks.Add(bark);
+		}
+
+		public List<Bark> GetAllowedBarks()
+		{
+			return allowedBarks;
 		}
 	}
 }

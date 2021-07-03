@@ -14,10 +14,20 @@ namespace DogDoor
 			this.door = door;
 		}
 
-		public void Recognize(string bark)
+		public void Recognize(Bark bark)
 		{
-			Console.WriteLine("Bark Recognizer: Heared a " + bark);
-			door.Open();
+			Console.WriteLine("\tBark Recognizer: Heared a " + bark.GetSound());
+			List<Bark> allowedBarks = door.GetAllowedBarks();
+			foreach(Bark allowedBark in allowedBarks)
+			{
+				if (allowedBark.Equals(bark))
+				{
+					door.Open();
+					return;
+				}
+
+			}
+			Console.WriteLine("This Dog is not allowed.");
 		}
 	}
 }
